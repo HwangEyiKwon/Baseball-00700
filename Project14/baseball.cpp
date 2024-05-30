@@ -21,7 +21,14 @@ public:
             return { true, 3, 0 };
         }
         if (guessNumber != question) {
-            return { false, getStrikes(guessNumber), 0 };
+            int balls = 0;
+            if (guessNumber[0] == question[1]) balls++;
+            if (guessNumber[0] == question[2]) balls++;
+            if (guessNumber[1] == question[0]) balls++;
+            if (guessNumber[1] == question[2]) balls++;
+            if (guessNumber[2] == question[0]) balls++;
+            if (guessNumber[2] == question[1]) balls++;
+            return { false, getStrikes(guessNumber), balls };
         }
         return{ false, 0, 0 };
     }
